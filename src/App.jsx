@@ -1,30 +1,37 @@
 import React from 'react';
+import {BrowserRouter, Route} from 'react-router-dom';
+import Page1 from './pages/page-1';
+import Page2 from './pages/page-2';
+import Page3 from './pages/page-3';
+import {Link} from 'react-router-dom';
+import Header from './components/Header/Header';
 import './App.scss';
 
 export default class App extends React.Component {
     render() {
         return (
-            <div className="app">
-                <div id="header" className="app--header">
-                        header
-                </div>
+            <BrowserRouter>
 
+            <div className="app">
+                <Header />
                 <div id="body" className="app--body">
                     <div className="app--sidebar">
                         <ul>
                             <li>
-                                <a href="">Page 1</a>
+                                <Link to="/">Page 1</Link>
                             </li>
                             <li>
-                                <a href="">Page 2</a>
+                                <Link to="/page-2">Page 2</Link>
                             </li>
                             <li>
-                                <a href="">Page 3</a>
+                                <Link to="/page-3">Page 3</Link>
                             </li>
                         </ul>
                     </div>
                     <div className="app--content">
-                        body
+                        <Route exact path="/" component={Page1}/>
+                        <Route path="/page-2" component={Page2}/>
+                        <Route path="/page-3" component={Page3}/>
                     </div>
                 </div>
 
@@ -33,6 +40,7 @@ export default class App extends React.Component {
                 </div>
 
             </div>
+            </BrowserRouter>
         )
     }
 }
