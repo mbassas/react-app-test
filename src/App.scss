@@ -1,0 +1,36 @@
+html, body, #root {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    &--header {
+        flex: 1 1 15%;
+        border: 1px solid grey;
+        background: #ccc;
+    }
+
+    &--body {
+        flex: 1 1 70%;
+        display: flex;
+    }
+
+    &--sidebar {
+        flex: 1 1 30%;
+        background: pink;
+    }
+
+    &--content {
+        flex: 1 1 70%;
+        background: red;
+    }
+
+    &--footer {
+        flex: 1 1 15%;
+        background: blue;
+    }
+}
