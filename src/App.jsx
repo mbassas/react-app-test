@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Route} from 'react-router-dom';
+import {MemoryRouter, Route} from 'react-router-dom';
 import Page1 from './pages/page-1';
 import Page2 from './pages/page-2';
 import Page3 from './pages/page-3';
@@ -8,7 +8,7 @@ import './App.scss';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducers from './reducers';
-import PageMenu from './components/PageMenu/pageMenu';
+import PageMenu from './containers/pageMenuContainer';
 
 
 export default class App extends React.Component {
@@ -16,10 +16,11 @@ export default class App extends React.Component {
         super(props);
         this.store = createStore(reducers);
     }
+    
     render() {
         return (
             <Provider store = {this.store}>
-                <BrowserRouter>
+                <MemoryRouter>
                     <div className="app">
                         <Header />
                         <div id="body" className="app--body">
@@ -33,12 +34,8 @@ export default class App extends React.Component {
                             </div>
                         </div>
 
-                        <div id="footer" className="app--footer">
-                            Copyright @Simba
-                        </div>
-
                     </div>
-                </BrowserRouter>
+                </MemoryRouter>
 
             </Provider>
         )

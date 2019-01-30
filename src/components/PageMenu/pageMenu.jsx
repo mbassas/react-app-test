@@ -1,10 +1,8 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import nextPageActionCreator from '../../actions/nextPage';
 import {Link} from 'react-router-dom';
 
 
-class PageMenu extends React.Component {
+export default class PageMenu extends React.Component {
 
     getStyles (currentPage, page) {
         if (currentPage === page) {
@@ -52,17 +50,3 @@ class PageMenu extends React.Component {
         )
     }
 }
-
-function mapStateToProps(state) {
-    return {
-        currentPage: state.currentPage
-    }
-}
-
-function mapDispatchToProps(dispatch) {
-    return {
-        nextPage: (page) => dispatch(nextPageActionCreator(page))
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(PageMenu)

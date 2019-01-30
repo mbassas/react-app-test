@@ -1,7 +1,12 @@
 import React from 'react';
+import withLogin from '../HOC/withLogin';
 
-export default () => (
+ function Page1Component () {
+  return (
     <div>
         Page 1
     </div>
-)
+  )  
+}
+
+export default withLogin(Page1Component);
