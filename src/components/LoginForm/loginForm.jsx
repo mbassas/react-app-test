@@ -1,11 +1,14 @@
 import React from 'react';
 import './loginForm.scss';
 import { connect } from 'react-redux';
+import {compose} from 'redux';
 import login from '../../actions/login';
+import {withTranslation} from 'react-i18next';
 
 class LoginForm extends React.Component {
     constructor(props) {
         super(props);
+        console.log(props);
 
         this.state = {
             username: '',
@@ -45,7 +48,11 @@ class LoginForm extends React.Component {
                 </div>
 
                 <div className="container">
-                    <label htmlFor="uname"><b>Username</b></label>
+                    <label htmlFor="uname">
+                        <b>
+                            { this.props.t('userName') }
+                        </b>
+                    </label>
                     <input type="text" placeholder="Enter Username" onChange={this.onChangeUsername} value={this.state.username} required />
 
                     <label htmlFor="psw"><b>Password</b></label>
@@ -66,4 +73,9 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(LoginForm);
+//export default withTranslation('common')(connect(null, mapDispatchToProps)(LoginForm));
+// compose(f(x), g(x)) === f(g(x))
+export default compose(
+    withTranslation('common'),
+    connect(null, mapDispatchToProps)
+)(LoginForm);

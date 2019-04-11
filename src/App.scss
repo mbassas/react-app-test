@@ -29,3 +29,12 @@ html, body, #root {
         background: blank;
     }
 }
+
+.language-selector {
+    width: 150px;
+    display: flex;
+    float: right;
+    button {
+        margin: 5px;
+    }
+}
