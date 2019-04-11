@@ -9,6 +9,8 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducers from './reducers';
 import PageMenu from './containers/pageMenuContainer';
+import { I18nextProvider } from 'react-i18next';
+import i18next from 'i18next';
 
 
 export default class App extends React.Component {
@@ -19,25 +21,26 @@ export default class App extends React.Component {
     
     render() {
         return (
-            <Provider store = {this.store}>
-                <MemoryRouter>
-                    <div className="app">
-                        <Header />
-                        <div id="body" className="app--body">
-                            <div className="app--sidebar">
-                                <PageMenu />
+            <I18nextProvider i18n={i18next}>
+                <Provider store = {this.store}>
+                    <MemoryRouter>
+                        <div className="app">
+                            <Header />
+                            <div id="body" className="app--body">
+                                <div className="app--sidebar">
+                                    <PageMenu />
+                                </div>
+                                <div className="app--content">
+                                    <Route exact path="/" component={Page1}/>
+                                    <Route path="/page-2" component={Page2}/>
+                                    <Route path="/page-3" component={Page3}/>
+                                </div>
                             </div>
-                            <div className="app--content">
-                                <Route exact path="/" component={Page1}/>
-                                <Route path="/page-2" component={Page2}/>
-                                <Route path="/page-3" component={Page3}/>
-                            </div>
+
                         </div>
-
-                    </div>
-                </MemoryRouter>
-
-            </Provider>
+                    </MemoryRouter>
+                </Provider>
+            </I18nextProvider>
         )
     }
 }
